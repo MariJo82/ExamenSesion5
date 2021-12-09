@@ -2,7 +2,7 @@ import { BaseEntity, Entity, Column, ObjectIdColumn} from "typeorm";
 
 @Entity()
 
-export class ArticuloAvon extends BaseEntity{
+export class articuloAvonEntity extends BaseEntity{
 
     @ObjectIdColumn()
     _id: string;
