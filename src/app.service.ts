@@ -31,8 +31,9 @@ export class AppService {
   }
 
   async editarUnArticulo(id: string, data: ArticuloDTO) {
-    const news = await this.repository.editarArticulo(data);
-    console.log(news);
+    
+        await this.repository.update(id, data);
+    
     return 'Artículo Editado';   
   }
 
