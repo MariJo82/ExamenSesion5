@@ -16,6 +16,7 @@ export class AppController {
   }
 
   @Get('/:id')
+  @ApiOperation({ summary: 'Obtiene un articulo del catalogo de Avon' })
   @ApiParam({ name: 'id',description:'Es el id del articulo a encontrar' })
   @ApiNotFoundResponse({ description: 'No se encuentra el articulo' })
   async obtenerUnArticulo(@Param('id') id: string) {
@@ -35,16 +36,16 @@ export class AppController {
   @ApiParam({ name: 'id',description:'Es el id del articulo a editar' })
   @ApiBody({ required: true, type: ArticuloDTO })
   @ApiNotFoundResponse({ description: 'No se encuentra el articulo' })
-  editarUnArticulo(@Param('id') id: string, @Body() req: ArticuloDTO): string {
+  async editarUnArticulo(@Param('id') id: string, @Body() req: ArticuloDTO) {
     return this.appService.editarUnArticulo(id, req);
   }
 
-  @Delete('/:id')
+  @Delete('/:NombreProducto')
   @ApiOperation({ summary: 'Elimina el articulo indicado' })
-  @ApiParam({ name: 'id',description:'Es el id del articulo a eliminar' })
+  @ApiParam({ name: 'NombreProducto',description:'Es el nombre del articulo a eliminar' })
   @ApiNotFoundResponse({ description: 'No se encuentra el articulo' })
-  eliminarUnArticulo(@Param('id') id: string): string {
-    return this.appService.eliminarUnArticulo(id);
+  eliminarUnArticulo(@Param('NombreProducto') nombreProducto: string) {
+    return this.appService.eliminarUnArticulo(nombreProducto);
   }
 
 }

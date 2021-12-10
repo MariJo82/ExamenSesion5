@@ -26,4 +26,18 @@ async crearArticulo(data: ArticuloDTO){
     return await articulo.save();
 }
 
+async editarArticulo(data: ArticuloDTO){
+    // declaracion
+    const {nombreProducto, descripcion,precio,lugarCompra, fechaCreacion} = data;
+    //instancia
+    const articulo = new articuloAvonEntity();
+    //updates
+    articulo.nombreProducto = data.nombreProducto;
+    articulo.descripcion = data.descripcion;    
+    articulo.precio = data.precio;
+    articulo.lugarCompra = data.lugarCompra;
+    articulo.fechaCreacion = data.fechaCreacion;
+    return await articulo.save();
+}
+
 }

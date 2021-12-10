@@ -27,15 +27,20 @@ export class AppService {
   async agregarUnArticulo(data: ArticuloDTO) {
     const news = await this.repository.crearArticulo(data);
         console.log(news);
-        return 'Agregado';    
+        return 'Artículo Agregado';    
   }
 
-  editarUnArticulo(id: string, data: ArticuloDTO): string {
-    return 'Editado articulo id: ' + id;
+  async editarUnArticulo(id: string, data: ArticuloDTO) {
+    const news = await this.repository.editarArticulo(data);
+    console.log(news);
+    return 'Artículo Editado';   
   }
 
-  eliminarUnArticulo(idArt: string): string {
-    return 'Eliminado articulo id: ' + idArt;
+  
+  async eliminarUnArticulo(NombreProducto:string) {
+        console.log('Eliminar un artículo');
+        let response = await this.repository.deleteOne({nombreProducto:NombreProducto}) ;
+        return 'Artículo eliminado';
   }
 
 }
